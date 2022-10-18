@@ -1,0 +1,12 @@
+all:
+		as --32 -o main32.o main32.s
+		cc -m32 -c math.c
+    # for gentoo:
+		#ld -m elf_i386 main32.o math.o -o main32 -lc -dynamic-linker /lib/ld-linux.so.2
+    # for arch:
+    ld -m elf_i386 main32.o math.o -o main32 -L/usr/lib32 -lc -dynamic-linker /lib/ld-linux.so.2
+
+
+# on arch to get multilib it required
+# uncomment [multilib] and the following line in /etc/pacman.conf
+# pacman -Syy lib32-glibc gcc-multilib

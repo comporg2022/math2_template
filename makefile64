@@ -1,0 +1,5 @@
+all:
+		as -o main64.o main64.s
+		cc -c math.c
+		ld -o main64 main64.o math.o -lc -dynamic-linker /lib64/ld-linux-x86-64.so.2
+		
